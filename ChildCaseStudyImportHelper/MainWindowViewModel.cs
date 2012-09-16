@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using System.Windows;
 using Ionic.Zip;
 using System.Configuration;
+using OCM.StringExtensions;
 
 namespace ChildCaseStudyImporter
 {
@@ -342,7 +343,7 @@ namespace ChildCaseStudyImporter
             AddColumn(ref dictionary, i++, string.Empty); //Disability/Illness
             AddColumn(ref dictionary, i++, ccs.Housing.ElectricCooking);
             AddColumn(ref dictionary, i++, ccs.Housing.ElectricityLight);
-            AddColumn(ref dictionary, i++, ccs.Father.WorksAsDetail); //Father Works As Other
+			AddColumn(ref dictionary, i++, ccs.Father.WorksAsDetail.Left(50)); //Father Works As Other
             AddColumn(ref dictionary, i++, ccs.School.BestSubject);
             AddColumn(ref dictionary, i++, ccs.FirstName);
             AddColumn(ref dictionary, i++, false); //Funded
@@ -355,7 +356,7 @@ namespace ChildCaseStudyImporter
             AddColumn(ref dictionary, i++, ccs.Housing.OtherLight);
             AddColumn(ref dictionary, i++, ccs.Housing.NoneLight);
             AddColumn(ref dictionary, i++, ccs.MiddleName);
-            AddColumn(ref dictionary, i++, ccs.Mother.WorksAs);
+            AddColumn(ref dictionary, i++, ccs.Mother.WorksAsDetail.Left(50));
             AddColumn(ref dictionary, i++, ccs.Housing.MudWalls);
             AddColumn(ref dictionary, i++, ccs.AboutMe.FavoriteThingsToDo);
             AddColumn(ref dictionary, i++, ccs.AboutMe.TwoFavoriteThingsAndWhy);
