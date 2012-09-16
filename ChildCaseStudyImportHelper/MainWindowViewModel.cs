@@ -327,7 +327,7 @@ namespace ChildCaseStudyImporter
             AddColumn(ref dictionary, i++, ccs.CareGiver.Relationship);
             AddColumn(ref dictionary, i++, ccs.CareGiver.RelationshipDetail);
             AddColumn(ref dictionary, i++, ccs.CareGiver.WorksAs);
-            AddColumn(ref dictionary, i++, ccs.CareGiver.WorksAsDetail);
+            AddColumn(ref dictionary, i++, ccs.CareGiver.WorksAsDetail.Left(50));
             AddColumn(ref dictionary, i++, ccs.WorkstationID);
             AddColumn(ref dictionary, i++, ccs.TempChildID);
             AddColumn(ref dictionary, i++, ccs.AboutMe.SpiritualDevelopment);
