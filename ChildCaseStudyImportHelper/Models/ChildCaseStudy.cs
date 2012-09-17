@@ -103,7 +103,7 @@ namespace ChildCaseStudyImporter.Models
         public bool OtherRoof { get; set; }
         public string OtherRoofDescription { get; set; }
 
-        public bool ElectricityLight { get; set; }
+        public bool ElectrictyLight { get; set; }
         public bool LampLight { get; set; }
         public bool GeneratorLight { get; set; }
         public bool NoneLight { get; set; }

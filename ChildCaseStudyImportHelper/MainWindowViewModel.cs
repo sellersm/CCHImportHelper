@@ -327,23 +327,23 @@ namespace ChildCaseStudyImporter
             AddColumn(ref dictionary, i++, ccs.CareGiver.Relationship);
             AddColumn(ref dictionary, i++, ccs.CareGiver.RelationshipDetail);
             AddColumn(ref dictionary, i++, ccs.CareGiver.WorksAs);
-            AddColumn(ref dictionary, i++, ccs.CareGiver.WorksAsDetail.Left(50));
+            AddColumn(ref dictionary, i++, ccs.CareGiver.WorksAsDetail.Left(100));
             AddColumn(ref dictionary, i++, ccs.WorkstationID);
             AddColumn(ref dictionary, i++, ccs.TempChildID);
             AddColumn(ref dictionary, i++, ccs.AboutMe.SpiritualDevelopment);
             AddColumn(ref dictionary, i++, ccs.AboutMe.PhysicalDevelopment);
             AddColumn(ref dictionary, i++, ccs.ChildLivesWith);
             AddColumn(ref dictionary, i++, ccs.Suffix);
-            AddColumn(ref dictionary, i++, ccs.AboutMe.FavoriteThingsToDo);
+            AddColumn(ref dictionary, i++, ccs.AboutMe.HowTheChildInteracts);
             AddColumn(ref dictionary, i++, _selectedChildProfileUpdate); //Child Profile Update
             AddColumn(ref dictionary, i++, ccs.School.ClassLevel);
             AddColumn(ref dictionary, i++, ccs.Housing.CommunityWater);
-            AddColumn(ref dictionary, i++, ccs.Housing.OtherCooking);
+			AddColumn(ref dictionary, i++, ccs.Housing.OtherCookingDescription.OtherDescription(ccs.Housing.OtherCooking));
             AddColumn(ref dictionary, i++, string.Empty); //current completion date - should this map to completion date from xml or original?
             AddColumn(ref dictionary, i++, string.Empty); //Disability/Illness
             AddColumn(ref dictionary, i++, ccs.Housing.ElectricCooking);
-            AddColumn(ref dictionary, i++, ccs.Housing.ElectricityLight);
-			AddColumn(ref dictionary, i++, ccs.Father.WorksAsDetail.Left(50)); //Father Works As Other
+            AddColumn(ref dictionary, i++, ccs.Housing.ElectrictyLight);
+			AddColumn(ref dictionary, i++, ccs.Father.WorksAsDetail.Left(100)); //Father Works As Other
             AddColumn(ref dictionary, i++, ccs.School.BestSubject);
             AddColumn(ref dictionary, i++, ccs.FirstName);
             AddColumn(ref dictionary, i++, false); //Funded
@@ -353,10 +353,10 @@ namespace ChildCaseStudyImporter
             AddColumn(ref dictionary, i++, false); //HIV positive
             AddColumn(ref dictionary, i++, string.Empty); //Child photo
             AddColumn(ref dictionary, i++, ccs.Housing.IndoorWater);
-            AddColumn(ref dictionary, i++, ccs.Housing.OtherLight);
+			AddColumn(ref dictionary, i++, ccs.Housing.OtherLightDescription.OtherDescription(ccs.Housing.OtherLight));
             AddColumn(ref dictionary, i++, ccs.Housing.NoneLight);
             AddColumn(ref dictionary, i++, ccs.MiddleName);
-            AddColumn(ref dictionary, i++, ccs.Mother.WorksAsDetail.Left(50));
+            AddColumn(ref dictionary, i++, ccs.Mother.WorksAsDetail.Left(100));
             AddColumn(ref dictionary, i++, ccs.Housing.MudWalls);
             AddColumn(ref dictionary, i++, ccs.AboutMe.FavoriteThingsToDo);
             AddColumn(ref dictionary, i++, ccs.AboutMe.TwoFavoriteThingsAndWhy);
@@ -366,18 +366,18 @@ namespace ChildCaseStudyImporter
             AddColumn(ref dictionary, i++, string.Empty); //original completion date - should this map to completion date from xml or current?
             AddColumn(ref dictionary, i++, false); //orphaned
             AddColumn(ref dictionary, i++, ccs.AboutMe.AlsoEnjoys);
-            AddColumn(ref dictionary, i++, ccs.Housing.OtherWalls);
+            AddColumn(ref dictionary, i++, ccs.Housing.OtherWallsDescription.OtherDescription(ccs.Housing.OtherWalls));
             AddColumn(ref dictionary, i++, false); //photo stored
             AddColumn(ref dictionary, i++, string.Empty); //profile update notification
             AddColumn(ref dictionary, i++, ccs.School.NonAttendenceReason);
             AddColumn(ref dictionary, i++, ccs.Housing.RiverWater);
-            AddColumn(ref dictionary, i++, ccs.Housing.OtherRoof);
+            AddColumn(ref dictionary, i++, ccs.Housing.OtherRoofDescription.OtherDescription(ccs.Housing.OtherRoof));
             AddColumn(ref dictionary, i++, ccs.Housing.WoodRoof);
             AddColumn(ref dictionary, i++, ccs.AboutMe.WantsToBe);
             AddColumn(ref dictionary, i++, ccs.Housing.TileRoof);
             AddColumn(ref dictionary, i++, ccs.Housing.TinRoof);
             AddColumn(ref dictionary, i++, ccs.School.VocationalOrLifeSkill);
-            AddColumn(ref dictionary, i++, ccs.Housing.OtherWater);
+			AddColumn(ref dictionary, i++, ccs.Housing.OtherWaterDescription.OtherDescription(ccs.Housing.OtherWater));
             AddColumn(ref dictionary, i++, ccs.AboutMe.HelpsOutBy);
             AddColumn(ref dictionary, i++, ccs.AboutMe.WhenIPlayWithMyFriends);
             AddColumn(ref dictionary, i++, ccs.AboutMe.AsksGod);

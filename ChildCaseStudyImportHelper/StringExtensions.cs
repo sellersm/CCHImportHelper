@@ -25,5 +25,20 @@ namespace OCM.StringExtensions
 			}
 			return leftString;
 		}
+
+		public static string OtherDescription(this String str, bool otherChecked)
+		{
+			string description = "";
+
+			if (otherChecked)
+			{
+				if (!(str == null))
+				{
+					description = str;
+				}
+			}
+
+			return description;
+		}
 	}   
 }
