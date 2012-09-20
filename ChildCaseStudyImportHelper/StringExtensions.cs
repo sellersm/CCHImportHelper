@@ -40,5 +40,17 @@ namespace OCM.StringExtensions
 
 			return description;
 		}
+
+		public static string FormatMultiline(this string str)
+		{
+			if ((str.Contains((char)10)) || (str.Contains((char)13)))
+			{
+				return "\"" + str + "\"";
+			}
+			else
+			{
+				return str;
+			}
+		}
 	}   
 }

@@ -222,7 +222,7 @@ namespace ChildCaseStudyImporter
             {
                 foreach (var column in row.Value)
                 {
-                    csvString.Append(column.Value + ",");
+                    csvString.Append(column.Value.FormatMultiline() + ",");
                 }
 
                 csvString.AppendLine();
@@ -359,7 +359,7 @@ namespace ChildCaseStudyImporter
             AddColumn(ref dictionary, i++, ccs.Mother.WorksAsDetail.Left(100));
             AddColumn(ref dictionary, i++, ccs.Housing.MudWalls);
             AddColumn(ref dictionary, i++, ccs.AboutMe.FavoriteThingsToDo);
-            AddColumn(ref dictionary, i++, ccs.AboutMe.TwoFavoriteThingsAndWhy);
+			AddColumn(ref dictionary, i++, ccs.AboutMe.TwoFavoriteThingsAndWhy);
             AddColumn(ref dictionary, i++, ccs.Brothers);
             AddColumn(ref dictionary, i++, ccs.Sisters);
             AddColumn(ref dictionary, i++, ccs.Housing.LampLight);
