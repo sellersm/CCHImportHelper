@@ -188,10 +188,12 @@ namespace ChildCaseStudyImporter
                                     var location = _locations.Where(l => l.Key == ccs.Project.Number).FirstOrDefault();
 
                                     if (location.Value != null)
-                                        ccs.Project.LocationID = location.Value;
+                                        ccs.Project.LocationID= location.Value;
                                     else
                                         continueProcessing = MessageBox.Show(string.Format("A Location ID was not found for the provided Project ID.\n\nProject ID: {0}\nFile Name: {1}\nZip File Name: {2}\n\nDo you want to continue processing?", ccs.Project.Number, entry.FileName, Path.GetFileName(zipFile.Name)), "Location ID not found", MessageBoxButton.YesNo) == MessageBoxResult.Yes;
                                 }
+
+								ccs.CCHZipFileName = Path.GetFileNameWithoutExtension (zipFile.Name);
 
                                 dictionary.Add(row++, ConvertToDictionary(ccs));
                             }
@@ -383,6 +385,7 @@ namespace ChildCaseStudyImporter
             AddColumn(ref dictionary, i++, ccs.AboutMe.AsksGod);
             AddColumn(ref dictionary, i++, ccs.Housing.WoodCooking);
             AddColumn(ref dictionary, i++, ccs.Housing.WoodWalls);
+			AddColumn(ref dictionary, i++, ccs.CCHZipFileName);
 
             return dictionary;
         }
@@ -469,7 +472,7 @@ namespace ChildCaseStudyImporter
             dictionary.Add(i++, "When I talk to God I ask Him");
             dictionary.Add(i++, "Wood Fire");
             dictionary.Add(i++, "Wood Wall");
-
+			dictionary.Add(i++, "CCH zip file name");
             return dictionary;
         }
     }

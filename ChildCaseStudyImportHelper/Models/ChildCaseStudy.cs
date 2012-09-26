@@ -35,6 +35,7 @@ namespace ChildCaseStudyImporter.Models
         public Housing Housing { get; set; }
         public School School { get; set; }
         public string AdditionalInformation { get; set; }
+		public string CCHZipFileName { get; set; }
     }
 
     public class Status
