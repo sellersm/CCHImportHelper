@@ -44,7 +44,30 @@ namespace ChildCaseStudyImporter
 
         private void CreateCSVButtonClicked(object sender, RoutedEventArgs e)
         {
-            _viewModel.CreateCSV();
+			if (_viewModel.FixTempChildID)
+			{
+				if (MessageBox.Show("Are you sure you want to modify the Temporary Child ID?", "Fix Duplicate Temporary Child ID", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
+				{
+					_viewModel.FixTempChildID = false;
+				}
+				else
+				{
+					if (_viewModel.FixTempChildIDSuffix == null || _viewModel.FixTempChildIDSuffix.Length == 0)
+					{
+						MessageBox.Show("Please enter the suffix you would like to add to the Temporary Child ID to make it unique");
+					}
+					else
+					{
+						_viewModel.CreateCSV();
+					}
+
+				}
+			}
+			else
+			{
+				_viewModel.CreateCSV();
+			}
+            
         }
 
         private void OutputBrowseButtonClick(object sender, RoutedEventArgs e)

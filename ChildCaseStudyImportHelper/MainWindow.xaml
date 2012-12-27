@@ -10,9 +10,10 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="20" />
             <RowDefinition Height="30" />
-            <RowDefinition Height="20" />
             <RowDefinition Height="30" />
-        </Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+			<RowDefinition Height="30" />
+		</Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Margin="5,0,0,0" Text="Zip Files:" />
         
@@ -51,9 +52,21 @@
             <Button Grid.Column="1" Content="Browse" HorizontalAlignment="Center" VerticalAlignment="Center" Width="72" Click="LocationsBrowseButtonClicked"/>
         </Grid>
 
-        <TextBlock Grid.Row="6" Margin="5,5,0,0" Text="Child Profile Update:" />
+		<Grid Grid.Row="6">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="150" />
+				<ColumnDefinition Width="30" />
+			</Grid.ColumnDefinitions>
+			<CheckBox IsChecked="{Binding FixTempChildID}" Grid.Column="0" Content="Fix Duplicate Temporary Child ID"  VerticalAlignment="Center" HorizontalAlignment="Left" Name="chkFixTempID"  />
+			<TextBlock Grid.Column="1" Text="Temporary Child ID Suffix: "  VerticalAlignment="Center"/>
 
-        <Grid Grid.Row="7">
+			<TextBox Grid.Column="2" HorizontalAlignment="Left" Text="{Binding FixTempChildIDSuffix}" VerticalAlignment="Center" Width="20" />
+		</Grid>
+		
+		<TextBlock Grid.Row="7" Margin="5,5,0,0" Text="Child Profile Update:" />
+
+        <Grid Grid.Row="8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="75" />
@@ -62,5 +75,5 @@
             <ComboBox VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" ItemsSource="{Binding ChildProfileUpdateValues}" SelectedItem="{Binding SelectedChildProfileUpdate}" />
             <Button Grid.Column="1" Content="Create CSV" HorizontalAlignment="Center" VerticalAlignment="Center" Width="72" Click="CreateCSVButtonClicked"/>
         </Grid>
-    </Grid>
+	</Grid>
 </Window>
