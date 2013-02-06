@@ -223,7 +223,7 @@ namespace ChildCaseStudyImporter
 							{
 								if (_locations != null)
 								{
-									var location = _locations.Where(l => l.Key == ccs.Project.Number).FirstOrDefault();
+									var location = _locations.Where(l => l.Key == ccs.Project.Number.ToUpper().Replace(" ","").Replace("_", "-")).FirstOrDefault();  /* Fix project id that has a space or an underscore instead of a dash */
 
 									if (location.Value != null)
 										ccs.Project.LocationID = location.Value;

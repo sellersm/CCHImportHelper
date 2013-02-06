@@ -72,6 +72,20 @@ namespace ChildCaseStudyImporter
 
         private void OutputBrowseButtonClick(object sender, RoutedEventArgs e)
         {
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.CheckFileExists = false;
+            ofd.Multiselect = false;
+			ofd.Filter = "";
+			ofd.FileName = System.IO.Path.GetFileName(_viewModel.OutputCSVFileName);
+			ofd.InitialDirectory = System.IO.Path.GetDirectoryName (_viewModel.OutputCSVFileName);  
+			bool? result = ofd.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+				_viewModel.OutputCSVFileName = ofd.FileName;
+            }
+
+			/*
             WinForms.FolderBrowserDialog fbd = new WinForms.FolderBrowserDialog();
             fbd.ShowNewFolderButton = true;
             var result = fbd.ShowDialog();
@@ -82,6 +96,7 @@ namespace ChildCaseStudyImporter
 
                 _viewModel.OutputCSVFileName = System.IO.Path.Combine(fbd.SelectedPath, filename);
             }
+			 */
         }
 
         private void ZipFilesSelectionChanged(object sender, SelectionChangedEventArgs e)
