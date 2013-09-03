@@ -401,7 +401,9 @@ namespace ChildCaseStudyImporter
 
 			if (_locations != null)
 			{
-				var location = _locations.Where(l => l.Key == ccs.Project.Number).FirstOrDefault();
+				// Memphis 9/3/13: force to uppercase to prevent mismatch of location codes when not all uppercase in the XML:
+				//var location = _locations.Where(l => l.Key == ccs.Project.Number).FirstOrDefault();
+				var location = _locations.Where(l => l.Key == ccs.Project.Number.ToUpper()).FirstOrDefault();
 				AddColumn(ref dictionary, i++, location.Value);
 			}
 			else
