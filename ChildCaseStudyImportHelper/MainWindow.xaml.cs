@@ -25,6 +25,14 @@ namespace ChildCaseStudyImporter
             InitializeComponent();
 
             _viewModel = new MainWindowViewModel();
+			if (_viewModel.FoundLocationCSVFile == false)
+			{
+				MessageBoxResult dlgResult = MessageBox.Show("Do you want to continue without the LocationID file? (not recommended)", "No Locations!", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+				if (dlgResult == MessageBoxResult.No)
+				{
+					this.Close();
+				}
+			}
             this.DataContext = _viewModel;
         }
 

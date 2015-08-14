@@ -88,6 +88,22 @@ namespace ChildCaseStudyImporter
 			}
 		 }
 
+		// Memphis 8-13-15 added to indicate that the LocationIDs.csv file was not found.
+		private bool _foundLocationCSVFile;
+		public bool FoundLocationCSVFile 
+		{ 
+			get
+			{
+				return _foundLocationCSVFile;
+			}
+			set
+			{
+				_foundLocationCSVFile = value;
+			}
+		}
+
+
+
 		private string _fixTempChildIDSuffix;
 		public string FixTempChildIDSuffix
 		{
@@ -145,6 +161,21 @@ namespace ChildCaseStudyImporter
 		{
 			OutputCSVFileName = ConfigurationManager.AppSettings.Get("DefaultOutputCSVFile");
 			LocationCSVFileName = ConfigurationManager.AppSettings.Get("DefaultLocationCSVFile");
+
+			// Memphis 8-13-2015 need to check if the LocationIDs.csv file can be accessed:
+			//MessageBox.Show(LocationCSVFileName);
+
+			if (File.Exists(LocationCSVFileName))
+			{
+				FoundLocationCSVFile = true;
+				//MessageBox.Show("The LocationIDs.csv file exists.");
+			}
+			else
+			{
+				FoundLocationCSVFile = false;
+				MessageBox.Show("Unable to get the LocationIDs.csv file! Please check that the _CRM folder is in the root of the M: drive! Contact Mark or Helpdesk if it is not, and/or you cannot find it.", "No Location File!", MessageBoxButton.OK, MessageBoxImage.Warning);
+			}
+
 
 			ChildProfileUpdateValues = ConfigurationManager.AppSettings.Get("ChildProfileUpdateValues").Split(',').ToList();
 			SelectedChildProfileUpdate = ChildProfileUpdateValues.FirstOrDefault();
@@ -211,7 +242,32 @@ namespace ChildCaseStudyImporter
 
 							Models.ChildCaseStudy ccs = null;
 
-							entry.Extract(TempFolderName);
+							// Memphis 8-13-2015 need to trap for exception here, to identify if there's a duplicate file in this .zip file:
+							try
+							{
+								entry.Extract(TempFolderName);
+							}
+							catch (ZipException zipEx)
+							{
+								// check the message for something like this: The file ZipTemp\SZ01-1498062742.xml already exists.
+								if (zipEx.Message != null)
+								{
+									string exMsg = zipEx.Message.ToString();
+									if ((exMsg != null || exMsg.Length > 0) && (exMsg.Contains("already exists")))
+									{
+										MessageBox.Show(string.Format("**WARNING***: There is a duplicate CCH form in the .zip files:{0}The duplicate CCH Form is: {1} {2}Found in this zip file: {3}", Environment.NewLine, entry.FileName,Environment.NewLine, zipFile.Name), "Duplicate CCH Form!", MessageBoxButton.OK, MessageBoxImage.Warning);
+										//string.Format("first line{0}second line", Environment.NewLine);
+										continueProcessing = false;
+									}
+								}
+								else
+								{
+									continueProcessing = false;
+									throw;
+								}
+								
+							}
+							
 
 							XmlSerializer serializer = new XmlSerializer(typeof(Models.ChildCaseStudy));
 							using (StreamReader reader = new StreamReader(Path.Combine(TempFolderName, entry.FileName)))
